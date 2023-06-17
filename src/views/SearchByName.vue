@@ -28,8 +28,7 @@
         Odio obcaecati, eos esse quidem libero deleniti.
       </p>
     <div class="flex items-center justify-between">
-<a :href="meal.strYoutube" target ="_blank" 
-class="px-3 py-2 rounded border-2 hover:bg-red-500 hover:text-white border-red-600 transition-colors">Youtube</a>
+<YoutubeButton :href="meal.strYoutube"/>
 <router-link  
 class="px-3 py-2 rounded border-2 hover:bg-orange-500 hover:text-white border-orange-600 transition-colors" to="/">View</router-link>
 </div>
@@ -43,6 +42,7 @@ import {ref} from 'vue'
 import axiosClient from "../axiosClient";
 import store from "../store";
 import { useRoute } from "vue-router";
+import YoutubeButton from '../components/YoutubeButton.vue'
 
 const route = useRoute();
 const keyword = ref("");
