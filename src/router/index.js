@@ -6,6 +6,7 @@ import GuestLayout from '../components/GuestLayout.vue'
 import MealsbyLetter from '../views/SearchByLetter.vue'
 import MealsbyName from '../views/SearchByName.vue'
 import MealsbyIngredient from '../views/SearchByIngredient.vue'
+import MealDetails from '../views/MealDetails.vue'
 
 
 const routes = [
@@ -31,6 +32,11 @@ children: [
     path: "/by-name/:name?",
     name: "byName",
     component: MealsbyName,
+  },
+  {
+    path:'meal/:id',
+    name:'mealDetails',
+    component:MealDetails
   }
 ]
 },

@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <div class="p-8 pb-0">
     <input
       type="text"
       v-model="keyword"
@@ -13,7 +13,7 @@
     v-for="meal of meals" 
     :key="meal.idMeal" 
     class="bg-white shadow rounded-xl">
-    <router-link to="/">
+    <router-link :to="{name: 'mealDetails', params:{id: meal.idMeal}}">
       <img 
     :src="meal.strMealThumb"   
     :alt="strMeal" 
@@ -38,14 +38,23 @@ class="px-3 py-2 rounded border-2 hover:bg-orange-500 hover:text-white border-or
   </div>
 </template>
 <script setup>
-import {computed} from "vue"
+import {computed, onMounted} from "vue"
 import {ref} from 'vue'
 import axiosClient from "../axiosClient";
 import store from "../store";
-const keyword = ref('');
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const keyword = ref("");
 const meals = computed(() => store.state.searchedMeals);
+
 function searchMeals() {
   store.dispatch('searchMeals', keyword.value)
 }
-
+onMounted(() => {
+  keyword.value = route.params.name
+  if (keyword.value) {
+    searchMeals()
+  }
+}) 
 </script>  
