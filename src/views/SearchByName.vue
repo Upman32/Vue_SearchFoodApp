@@ -9,32 +9,8 @@
     />
   </div>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-    <div 
-    v-for="meal of meals" 
-    :key="meal.idMeal" 
-    class="bg-white shadow rounded-xl">
-    <router-link :to="{name: 'mealDetails', params:{id: meal.idMeal}}">
-      <img 
-    :src="meal.strMealThumb"   
-    :alt="strMeal" 
-    class="rounded-t w-full h-48 object-cover">
-    </router-link>
-<div class="p-3">
-  <h3 class="font-bold">{{ meal.strMeal }}</h3>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-       Vitae consequatur nemo officia alias,
-       sit ipsum unde quos aliquid autem, iusto beatae quaerat quam!
-        Odio obcaecati, eos esse quidem libero deleniti.
-      </p>
-    <div class="flex items-center justify-between">
-<YoutubeButton :href="meal.strYoutube"/>
-<router-link  
-class="px-3 py-2 rounded border-2 hover:bg-orange-500 hover:text-white border-orange-600 transition-colors" to="/">View</router-link>
+<MealItem v-for="meal of meals" :key="meal.idMeal" :meal="meal"/>
 </div>
-</div>
-    </div>
-  </div>
 </template>
 <script setup>
 import {computed, onMounted} from "vue"
@@ -43,6 +19,7 @@ import axiosClient from "../axiosClient";
 import store from "../store";
 import { useRoute } from "vue-router";
 import YoutubeButton from '../components/YoutubeButton.vue'
+import MealItem from "../components/MealItem.vue";
 
 const route = useRoute();
 const keyword = ref("");

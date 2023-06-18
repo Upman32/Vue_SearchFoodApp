@@ -1,7 +1,5 @@
 <template>
   <div class="flex flex-col p-8">
-
-
     <div class="mt-2 flex justify-center gap-1">
       <router-link :to="{name: 'byLetter', params: {letter}}" v-for="letter of letters" :key="letter">
         {{ letter }}
@@ -14,8 +12,6 @@ import { computed, onMounted, ref } from "vue";
 import store from "../store";
 import axiosClient from "../axiosClient";
 
-const meals = computed(() => store.state.meals);
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const ingredient = ref([])
 
 onMounted(async () => {
