@@ -1,8 +1,11 @@
 <template>
   <div class="p-8">
-    <h1 class="text-4xm font-bold mb-4">Ingredients/</h1>
+    <h1 class="text-4xm font-bold mb-4">Ingredients</h1>
     <router-link
-      :to="{ name: 'byIngredient', params: { ingredient: ingredient.idIngredient } }"
+      :to="{ 
+        name: 'byIngredient',
+       params: { ingredient: ingredient.strIngredient } 
+       }"
       v-for="ingredient of ingredients"
       :key="ingredient.idIngredient"
       class="block bg-white rounded p-3 mb-3 shadow"
@@ -12,8 +15,9 @@
     </router-link>
   </div>
 </template>
+
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import axiosClient from "../axiosClient";
 
 const ingredients = ref([]);

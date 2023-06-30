@@ -13,16 +13,17 @@
 </div>
 </template>
 <script setup>
+import { computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
+import store from "../store";
+import MealItem from "../components/MealItem.vue";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const meals = computed(() => store.state.mealsByLetter)
 const route = useRoute();
-
 watch(route, () => {
 store.dispatch('searchMealsByLetter', route.params.letter)
 })
-
 onMounted(() => {
 store.dispatch('searchMealsByLetter', route.params.letter)
 })
