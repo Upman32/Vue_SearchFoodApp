@@ -14,7 +14,6 @@ const { meals } = defineProps({
   meals:{
     required:true,
     type:Array,
-    default: ()
   }
 }) 
 </script>
